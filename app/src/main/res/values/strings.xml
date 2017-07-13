@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BoostCamp-2nd</string>
+    <string name="toolbar_title">맛집리스트</string>
+    <string name="distance">거리순</string>
+    <string name="popularity">인기순</string>
+    <string name="latest">최근순</string>
+</resources>
