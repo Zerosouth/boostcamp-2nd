@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.android/build-cache/4171cb48494f3b6ea55e3547cd7b91a88ffdc310/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3d8b5f697ccb9c5f82b0d73e5888c15094b8b156/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4b076152e9afcfc56237e062cb3748e138e18e1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.7.0/2637055420a2da406e3ea9920c2ff4aafd38c970/butterknife-annotations-8.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2637055420a2da406e3ea9920c2ff4aafd38c970">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.7.0_2ebd2ca0b81cd2c1e0cefa78beb4922fb9042fd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_574e748a5b20f544cbbbceb8fe17e8e2bd8318c1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.android/build-cache/16652c47c5f5db6b399256521e7e31cf6a41b274/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6b4fe9ad9a0793aa465adc5a26bbc20f80a15281/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.android/build-cache/24d16b71593ec6a05189a4f557533284bf920687/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7514080f569d13a5b18953104f375875e62eb8f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.android/build-cache/14f16971e83582ce51aec4ebfbec8b8624f0e20c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0b7d39c161cecdb6c2b52a1cdc71faf0ffd4626e">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a73e93706966b6f9da1e174adecc06815f2c7948/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/.android/build-cache/847121d77fa5301d6e7e021d7b7ab83fd2c4aa60/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_265205ad9053137e11d3ff5c88c3103355b2ed92/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1b64ad6f79665a61ffaa6f22e52cb0ebdfa8d62e">
+        <dex dex="/Users/Dongjin/Desktop/BoostCamp/Project02/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dbaada7523bdb20eda52d7c47d26259ed2dc2780/classes.dex" />
+    </item>
+
+</items>
