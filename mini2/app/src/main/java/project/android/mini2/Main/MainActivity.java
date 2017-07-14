@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         items.add(new Item("삼교리동치미막국수",R.drawable.content_img2, R.string.content2, false, 3, 0, 4  ));
         items.add(new Item("뚱아뚱아오릿대",R.drawable.content_img3, R.string.content3, false, 4, 4, 3  ));
         items.add(new Item("카레곰빵",R.drawable.content_img4, R.string.content4, false, 5, 2, 2  ));
+        items.add(new Item("매일식당",R.drawable.content_img5, R.string.content5, true, 0, 8, 4 ));
 
     }
 

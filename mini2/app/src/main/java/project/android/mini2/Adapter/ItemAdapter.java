@@ -6,10 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import project.android.mini2.Data.Item;
 import project.android.mini2.Fragment.BaseFragment;
+import project.android.mini2.Main.MainActivity;
 import project.android.mini2.R;
 import project.android.mini2.Holder.ViewHolder;
 
@@ -49,20 +53,31 @@ public class ItemAdapter  extends RecyclerView.Adapter<ViewHolder>{
         final Item item = items.get(position);
         holder.name.setText(item.getName());
         holder.content.setText(item.getContent());
-        holder.contentImg.setImageResource(item.getImg());
-        if(item.getCheck() == true)
-            holder.checkView.setImageResource(R.drawable.check);
-        else
-            holder.checkView.setImageResource(R.drawable.no_check);
+        Glide.with(context).load(item.getImg())
+                .override(1400,600).into(holder.contentImg);
+        if(item.getCheck() == true) {
+            Glide.with(context).load(R.drawable.check).centerCrop()
+                    .bitmapTransform(new CropCircleTransformation(context))
+                    .into(holder.checkView);
+        }
+        else {
+            Glide.with(context).load(R.drawable.no_check).centerCrop()
+                    .bitmapTransform(new CropCircleTransformation(context))
+                    .into(holder.checkView);
+        }
 
         holder.checkView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Boolean isCkeck= BaseFragment.noti(position);
                 if(isCkeck == true)
-                    holder.checkView.setImageResource(R.drawable.check);
+                    Glide.with(context).load(R.drawable.check).centerCrop()
+                            .bitmapTransform(new CropCircleTransformation(context))
+                            .into(holder.checkView);
                 else
-                    holder.checkView.setImageResource(R.drawable.no_check);
+                    Glide.with(context).load(R.drawable.no_check).centerCrop()
+                            .bitmapTransform(new CropCircleTransformation(context))
+                            .into(holder.checkView);
             }
         });
 
