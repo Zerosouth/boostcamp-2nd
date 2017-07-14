@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import project.android.mini2.Adapter.ItemAdapter;
 import project.android.mini2.Data.Item;
+import project.android.mini2.Adapter.ItemAdapter;
 import project.android.mini2.Main.MainActivity;
 import project.android.mini2.R;
-
-import static project.android.mini2.Main.MainActivity.items;
 
 /**
  * Created by qkrqh on 2017-07-13.
@@ -83,7 +82,7 @@ public abstract class BaseFragment extends Fragment {
         }
 
         recyclerView.setLayoutManager(st);
-        adapter = new ItemAdapter(items,context,R.layout.item_layout);
+        adapter = new ItemAdapter(MainActivity.items, context, R.layout.item_layout);
         recyclerView.setAdapter(adapter);
     }
 
@@ -109,6 +108,7 @@ public abstract class BaseFragment extends Fragment {
                         state = grid;
                     }
                     else{
+                        Log.d("d", "d");
                         menu.setImageResource(R.drawable.menu_icon2);
                         setRecyclerView(linear);
                         state=linear;

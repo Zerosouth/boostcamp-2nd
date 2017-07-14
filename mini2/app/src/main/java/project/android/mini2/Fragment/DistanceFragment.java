@@ -21,7 +21,11 @@ public class DistanceFragment extends BaseFragment {
     public class CompareDistance implements Comparator<Item>{
         @Override
         public int compare(Item i1, Item i2) {
-            return i1.getDistance() - (i2.getDistance());
+            if(MainActivity.order == MainActivity.up)
+                return i1.getDistance() - i2.getDistance();
+            else
+                return i2.getDistance() - i1.getDistance();
+
         }
     }
 

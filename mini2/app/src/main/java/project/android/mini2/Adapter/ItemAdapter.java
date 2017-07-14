@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import project.android.mini2.Data.Item;
 import project.android.mini2.Fragment.BaseFragment;
-import project.android.mini2.Main.MainActivity;
 import project.android.mini2.R;
 import project.android.mini2.Holder.ViewHolder;
 
@@ -21,7 +20,7 @@ import project.android.mini2.Holder.ViewHolder;
  * Created by qkrqh on 2017-07-14.
  */
 
-public class ItemAdapter  extends RecyclerView.Adapter<ViewHolder>{
+public class ItemAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     private Context context;
     private ArrayList<Item> items;

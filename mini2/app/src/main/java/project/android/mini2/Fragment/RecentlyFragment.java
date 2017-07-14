@@ -20,8 +20,12 @@ public class RecentlyFragment extends BaseFragment {
 
     public class CompareRecent implements Comparator<Item> {
         @Override
+
         public int compare(Item i1, Item i2) {
-            return i1.getRecent() - (i2.getRecent());
+            if(MainActivity.order == MainActivity.up)
+                return i1.getRecent() - i2.getRecent();
+            else
+                return i2.getRecent() - i1.getRecent();
         }
     }
 }

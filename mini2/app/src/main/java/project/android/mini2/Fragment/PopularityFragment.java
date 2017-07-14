@@ -22,7 +22,10 @@ public class PopularityFragment extends BaseFragment {
     public class ComparePopularity implements Comparator<Item> {
         @Override
         public int compare(Item i1, Item i2) {
-            return i1.getPopular() - (i2.getPopular());
+            if(MainActivity.order == MainActivity.up)
+                return i1.getPopular() - i2.getPopular();
+            else
+                return i2.getPopular() - i1.getPopular();
         }
     }
 }
