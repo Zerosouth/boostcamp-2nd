@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Project2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hoya">건대에 위치한 초밥 전문점입니다. 인기메뉴로 초밥세트 호야와 특호야가 있는데,
+        개수는 같고 구성이 다르다고 하네요.</string>
+    <string name="manpuku">석촌호수 근처에 있는 일본 가정식 전문점입니다. 인기메뉴로는 연어뱃살덮밥이 있습니다.
+    한적한 동네에 위치한 가게지만 사장님의 입담으로 재미있는 분위기가 가득한 곳입니다.</string>
+    <string name="sujung">복국 전문으로 시원하고 맑게 제공되는 지리복국과 얼큰하고 개운한 복매운탕이 1인분씩 양은냄비에 담아 나옵니다.
+        생선회는 매일 이른 아침마다 잡어 위주의 싱싱한 활어장을 보고 잘 손질하여 그 날에 제공되며, 재료부족시에는 판매 매진이 되기도 합니다.</string>
+    <string name="standrip">서서먹는 것이 특징인 소갈비 전문점입니다.</string>
+    <string name="busan">냉채족발을 처음으로 개발했다는 부산에 있는 족발 전문점입니다.</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Open drawer</string>
+</resources>
