@@ -24,7 +24,19 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp" />
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:layout_height="60dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/toolbar_textview"
+                    android:text="맛집리스트"
+                    android:textSize="16sp"
+                    android:layout_gravity="left"
+                    android:textColor="@android:color/white" />
+
+                </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
