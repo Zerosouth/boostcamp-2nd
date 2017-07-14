@@ -11,19 +11,29 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import appjam.contest.secondminiproject.R;
 import appjam.contest.secondminiproject.adapter.ViewPagerAdapter;
-import appjam.contest.secondminiproject.menu.PagerFragment;
+import appjam.contest.secondminiproject.application.ApplicationController;
+import appjam.contest.secondminiproject.tab.PagerFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity{
 
     //Navigation Setting
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.drawer_layout) DrawerLayout drawer;
+    @BindView(R.id.street_layout) LinearLayout streetLayout;
+    @BindView(R.id.popular_layout) LinearLayout popularLayout;
+    @BindView(R.id.recent_layout) LinearLayout recentLayout;
+
 
     //ViewPager Setting
     @BindView(R.id.pager) ViewPager pager;
@@ -56,7 +66,43 @@ public class MainActivity extends AppCompatActivity{
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        CircleImageView profileImage=(CircleImageView)findViewById(R.id.profile_image);
+        Glide.with(getApplicationContext()).load(ApplicationController.user_profile).into(profileImage);
+
+        TextView nameText=(TextView)findViewById(R.id.header_name);
+        nameText.setText(ApplicationController.user_name);
+
+
     }
+
+    public void navClick(View v){
+
+        streetLayout.setBackgroundColor(Color.rgb(255,255,255));
+        popularLayout.setBackgroundColor(Color.rgb(255,255,255));
+        recentLayout.setBackgroundColor(Color.rgb(255,255,255));
+
+
+        switch (v.getId()){
+
+            case R.id.street_layout:
+                streetLayout.setBackgroundColor(Color.rgb(0,0,0));
+                pager.setCurrentItem(0);
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.popular_layout:
+                popularLayout.setBackgroundColor(Color.rgb(0,0,0));
+                pager.setCurrentItem(1);
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.recent_layout:
+                recentLayout.setBackgroundColor(Color.rgb(0,0,0));
+                pager.setCurrentItem(2);
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+        }
+    }
+
+
 
     private void  viewPagerSetting(){
 
@@ -105,6 +151,38 @@ public class MainActivity extends AppCompatActivity{
                 }
 
                 firstLayout = !firstLayout;
+            }
+        });
+
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                streetLayout.setBackgroundColor(Color.rgb(255,255,255));
+                popularLayout.setBackgroundColor(Color.rgb(255,255,255));
+                recentLayout.setBackgroundColor(Color.rgb(255,255,255));
+
+                switch (pager.getCurrentItem()){
+                    case 0:
+                        streetLayout.setBackgroundColor(Color.rgb(0,0,0));
+                        break;
+                    case 1:
+                        popularLayout.setBackgroundColor(Color.rgb(0,0,0));
+                        break;
+                    case 2:
+                        recentLayout.setBackgroundColor(Color.rgb(0,0,0));
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
     }

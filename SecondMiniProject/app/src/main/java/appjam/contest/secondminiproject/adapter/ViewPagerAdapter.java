@@ -2,9 +2,8 @@ package appjam.contest.secondminiproject.adapter;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.widget.Toast;
 
-import appjam.contest.secondminiproject.menu.PagerFragment;
+import appjam.contest.secondminiproject.tab.PagerFragment;
 
 /**
  * Created by jeongdahun on 2017. 7. 13..

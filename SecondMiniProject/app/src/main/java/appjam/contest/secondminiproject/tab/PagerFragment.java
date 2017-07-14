@@ -1,16 +1,14 @@
-package appjam.contest.secondminiproject.menu;
+package appjam.contest.secondminiproject.tab;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,9 +16,7 @@ import appjam.contest.secondminiproject.R;
 import appjam.contest.secondminiproject.adapter.FoodStoreRecyclerViewAdapter;
 import appjam.contest.secondminiproject.listener.OnCheckedListener;
 import appjam.contest.secondminiproject.listener.OnLayoutChangeListener;
-import appjam.contest.secondminiproject.main.MainActivity;
 import appjam.contest.secondminiproject.model.FoodStore;
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -224,13 +220,13 @@ public class PagerFragment extends Fragment implements OnLayoutChangeListener{
 
     @Override
     public void changeLayout(int layout) {
-        Toast.makeText(getContext(),String.valueOf(layout)+"레이아웃",Toast.LENGTH_SHORT).show();
-        if(layout==0){
-            staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-            foodstoreRecylcerView.setLayoutManager(staggeredGridLayoutManager);
-        }else{
-         //   linearLayoutManager=new LinearLayoutManager(getContext());
-         //   foodstoreRecylcerView.setLayoutManager(linearLayoutManager);
-        }
+//        Toast.makeText(getContext(),String.valueOf(layout)+"레이아웃",Toast.LENGTH_SHORT).show();
+//        if(layout==0){
+//            staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//            foodstoreRecylcerView.setLayoutManager(staggeredGridLayoutManager);
+//        }else{
+//         //   linearLayoutManager=new LinearLayoutManager(getContext());
+//         //   foodstoreRecylcerView.setLayoutManager(linearLayoutManager);
+//        }
     }
 }
