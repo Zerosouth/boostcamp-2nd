@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mini2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content1">꿀막걸리가 인기메뉴고 맛있는 음식을 저렴하게 즐길 수 있는 해우소입니다. </string>
+    <string name="content2">막국수를 비빔으로 먹을지 물로 먹을지 고객이 만들어 먹는 삼교리동치미막국수입니다. </string>
+    <string name="content3"> 맛집!   </string>
+    <string name="content4"> 빵 맛있겠당  </string>
+    <string name="content5"> 판교점이지만 이번 방학에는 못간다  </string>
+</resources>
