@@ -96,7 +96,7 @@ public class MapActivity extends AppCompatActivity
     Geocoder gc;
     Location mLastLocation;
     LocationRequest mLocationRequest;
-    Marker searchMarker;
+    Marker searchMarker=null;
 
     //custom marker, custom window
     View customMarkerView;
@@ -125,6 +125,8 @@ public class MapActivity extends AppCompatActivity
     String explain;
     double latitude;
     double longitude;
+
+    Place place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,6 +274,9 @@ public class MapActivity extends AppCompatActivity
                         public void onResponse(Call<ArrayList<Place>> call, Response<ArrayList<Place>> response) {
                             if(response.isSuccessful()){
                                 Log.d("retrofit",response.body().size()+"");
+                                //search 한 곳 없애기 어짜피 이거는 이미 디비에 저장되있음 밑에서 받아오면됨
+                                searchMarker.remove();
+                                searchMarker=null;
 
                                 //데이터 받기
                                 placeList=response.body();
@@ -284,6 +289,7 @@ public class MapActivity extends AppCompatActivity
                                     LatLng latLng=new LatLng(placeList.get(i).getLatitude(), placeList.get(i).getLongitude());
                                     options.position(latLng);
                                     Marker marker = map.addMarker(options);
+                                    marker.setDraggable(true);
                                     markerList.add(marker);
                                 }
 
@@ -302,7 +308,6 @@ public class MapActivity extends AppCompatActivity
                 }
                 else if(nextBtn.getText().toString().equals("새 마커 등록하기")){
 
-                    searchMarker.remove();
                     for(int i=0;i<markerList.size();i++)
                         markerList.get(i).remove();
 
@@ -347,13 +352,14 @@ public class MapActivity extends AppCompatActivity
 
 
 
+
         /////////////마커 클릭했을때
         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 
             @Override
             public boolean onMarkerClick(Marker marker) {
 
-                Place place=searchList(marker);
+                place=searchList(marker);
                 titleText.setText(place.getTitle());
 
                 return false;
@@ -376,7 +382,7 @@ public class MapActivity extends AppCompatActivity
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                Place place=searchList(marker);
+                place=searchList(marker);
 
                 popup_titleText.setText(place.getTitle());
                 popup_locationText.setText(place.getLocation());
@@ -387,6 +393,56 @@ public class MapActivity extends AppCompatActivity
                 //클릭시 팝업 윈도우 생성
                 LinearLayout relativeLayout = (LinearLayout) findViewById(R.id.mainLayout);
                 popup.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+            }
+        });
+
+
+        //마커 드래그했을때
+        map.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+                Log.d("Drag","start");
+                Log.d("Drag",marker.getPosition().latitude+"");
+                Log.d("Drag",marker.getPosition().longitude+"");
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+          //      Log.d("Drag","ing");
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(final Marker marker) {
+                Log.d("Drag","end");
+                Call<Void> updateLocation=service.updateLocation(place.getLatitude(), place.getLongitude(),
+                        marker.getPosition().latitude, marker.getPosition().longitude);
+                updateLocation.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.isSuccessful()){
+                            Log.d("update","success");
+
+                            if(searchMarker != null){
+                                Log.d("searchMarker","not null");
+                                searchMarker.setPosition(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude));
+                            }
+                            else{
+                                Log.d("searchMarker","null");
+                                changeList(place.getLatitude(), place.getLongitude(), marker.getPosition().latitude, marker.getPosition().longitude);
+                            }
+                        }
+                        else
+                            Log.d("update","fail");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("update","fail2");
+                    }
+                });
+
+
             }
         });
 
@@ -402,12 +458,16 @@ public class MapActivity extends AppCompatActivity
         LatLng latLng=searchPlace(location);
         latitude=latLng.latitude;
         longitude=latLng.longitude;
+        Log.d("real lat",latitude+"");
+        Log.d("real long",longitude+"");
+
 
         //입력한 위치 마커 설정 및 옵션
         MarkerOptions options = new MarkerOptions();
         options.position(latLng);
         options.icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(customMarkerView)));
         searchMarker = map.addMarker(options);
+        searchMarker.setDraggable(true);
         Location location=new Location("");
         location.setLatitude(latLng.latitude);
         location.setLongitude(latLng.longitude);
@@ -415,7 +475,7 @@ public class MapActivity extends AppCompatActivity
 
 
     }
-    public Place searchList(Marker marker){
+    private Place searchList(Marker marker){
 
         if(placeList.size()==0){
             Log.d("searchList","current");
@@ -434,7 +494,23 @@ public class MapActivity extends AppCompatActivity
         return null;
     }
 
-    LatLng searchPlace(String location){
+    private void changeList(double origin_lat,double origin_long, double changed_lat, double changed_long ){
+        for(int i=0;i<placeList.size();i++){
+            if(placeList.get(i).getLatitude()==origin_lat && placeList.get(i).getLongitude()==origin_long){
+                Place place=new Place(
+                        placeList.get(i).getTitle(),
+                        placeList.get(i).getLocation(),
+                        placeList.get(i).getNum(),
+                        placeList.get(i).getExplain(),
+                        changed_lat,
+                        changed_long);
+                placeList.remove(i);
+                placeList.add(place);
+            }
+        }
+    }
+
+    private LatLng searchPlace(String location){
 
         try {
             List<Address> addr = gc.getFromLocationName(location, 5);
@@ -450,7 +526,7 @@ public class MapActivity extends AppCompatActivity
     }
 
     //location변수 위치로 맵 바꿈
-    public void updateMap(Location location) {
+    private void updateMap(Location location) {
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng Loc = new LatLng(latitude, longitude);

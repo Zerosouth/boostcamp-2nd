@@ -31,6 +31,10 @@ public interface NetworkService {
     @POST("/place/save")
     Call<ArrayList<Place>> save_And_getList(@Body Place place);
 
+    @GET("/place/update")
+    Call<Void> updateLocation(@Query("origin_lat") double origin_lat, @Query("origin_long") double origin_long,
+                              @Query("changed_lat") double changed_lat, @Query("changed_long") double changed_long);
+
 
 
 }
